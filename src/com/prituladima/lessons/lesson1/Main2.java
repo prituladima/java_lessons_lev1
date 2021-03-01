@@ -1,4 +1,4 @@
-package com.prituladima.lessons;
+package com.prituladima.lessons.lesson1;
 
 public class Main2 {
 

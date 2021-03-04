@@ -23,10 +23,10 @@ public class ImageUtil {
             return null;
         }
 
-        int[][] pixels = new int[bufferedImage.getWidth()][bufferedImage.getHeight()];
-        for (int i = 0; i < bufferedImage.getWidth(); i++) {
-            for (int j = 0; j < bufferedImage.getHeight(); j++) {
-                pixels[i][j] = bufferedImage.getRGB(i, j);
+        int[][] pixels = new int[bufferedImage.getHeight()][bufferedImage.getWidth()];
+        for (int i = 0; i < bufferedImage.getHeight(); i++) {
+            for (int j = 0; j < bufferedImage.getWidth(); j++) {
+                pixels[i][j] = bufferedImage.getRGB(j, i);
             }
         }
         return pixels;
@@ -34,10 +34,10 @@ public class ImageUtil {
 
     public static String getImageFromPixels(int[][] pixels) {
         BufferedImage bufferedImage
-                = new BufferedImage(pixels.length, pixels[0].length, BufferedImage.TYPE_INT_RGB);
+                = new BufferedImage(pixels[0].length, pixels.length, BufferedImage.TYPE_INT_RGB);
         for (int i = 0; i < pixels.length; i++) {
             for (int j = 0; j < pixels[0].length; j++) {
-                bufferedImage.setRGB(i, j, pixels[i][j]);
+                bufferedImage.setRGB(j, i, pixels[i][j]);
             }
         }
         String fileName = null;

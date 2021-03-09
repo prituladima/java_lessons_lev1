@@ -9,7 +9,6 @@ import java.util.UUID;
 
 public class ImageUtil {
 
-    private static final String NAME = "generated_image_";
     private static final String EXTENSION = ".jpg";
 
     public static int[][] getPixelsFromImage(String fileName) {
@@ -42,7 +41,7 @@ public class ImageUtil {
         }
         String fileName = null;
         try {
-            fileName = NAME + UUID.randomUUID() + new Date() + EXTENSION;
+            fileName = UUID.randomUUID() + EXTENSION;
             File outputFile = new File(fileName);
             ImageIO.write(bufferedImage, "jpg", outputFile);
             return fileName;

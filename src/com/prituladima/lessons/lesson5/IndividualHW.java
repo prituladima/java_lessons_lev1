@@ -18,9 +18,11 @@ public class IndividualHW {
         printMatrix(mtx, 0, mtx.length, output);
         System.out.println(output);
 
+        System.out.println("2. Написать свою реализацию MutableString.");
+
         //Прочитать про то как работает ArrayList. Big O time complexity
         //Прочитать про амортизацию. Лучшее/Среднее/Хучшее время работы.
-        System.out.println("2. Написать свою реализацию MutableString, протестировать ее и написать асимптотическую сложность запросов (методов).");
+        System.out.println("2*. Оптимизировать реализацию MutableString, протестировать ее и написать асимптотическую сложность запросов (методов).");
 
 
         System.out.println("3. Вывести матрицу рекурсивно в MutableString");

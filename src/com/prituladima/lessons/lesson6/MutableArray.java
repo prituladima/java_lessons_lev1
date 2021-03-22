@@ -2,12 +2,13 @@ package com.prituladima.lessons.lesson6;
 
 import java.util.Arrays;
 
-public class MutableArray /*extends Object*/ implements IArray {
 
-    int[] arr;//{0 0 0 0 0 0}
-    int length;
+public class MutableArray /*extends Object*/ implements IArray /*Abstraction*/{
 
-    public MutableArray(int[] arr){
+    public int[] arr;//{0 0 0 0 0 0}
+    public int length;
+
+    public MutableArray(int[] arr) {
         this.arr = arr.clone();
         this.length = arr.length;
     }
@@ -15,6 +16,24 @@ public class MutableArray /*extends Object*/ implements IArray {
     public MutableArray(int length) {
         this.length = length;
         this.arr = new int[length];
+    }
+
+    @Override
+    public IArray add(int val) {
+        //old
+        //[1, 2, 3] <- 4
+        //new
+        //[0, 0, 0, 0]
+        //[1, 2, 3, 4]
+
+        int[] newArr = new int[length + 1];
+        for (int i = 0; i < length; i++) {
+            newArr[i] = arr[i];
+        }
+        newArr[length] = val;
+        arr = newArr;
+        length++;
+        return this;
     }
 
     @Override
@@ -51,7 +70,7 @@ public class MutableArray /*extends Object*/ implements IArray {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return Arrays.toString(arr);
     }
 

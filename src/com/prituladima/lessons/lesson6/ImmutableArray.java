@@ -1,5 +1,7 @@
 package com.prituladima.lessons.lesson6;
 
+import java.util.Arrays;
+
 public class ImmutableArray implements IArray {
 
     int[] arr;//{0 0 0 0 0 0}
@@ -13,6 +15,17 @@ public class ImmutableArray implements IArray {
     public ImmutableArray(int length) {
         this.length = length;
         this.arr = new int[length];
+    }
+
+    @Override
+    public IArray add(int val) {
+        ImmutableArray clone = new ImmutableArray(this.length + 1);
+
+        for (int i = 0; i < length; i++) {
+            clone.arr[i] = this.arr[i];
+        }
+        clone.arr[length] = val;
+        return clone;
     }
 
     @Override
@@ -46,5 +59,10 @@ public class ImmutableArray implements IArray {
             clone.arr[j] = temp;
         }
         return clone;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(arr);
     }
 }

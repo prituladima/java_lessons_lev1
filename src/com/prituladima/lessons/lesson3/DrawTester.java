@@ -331,7 +331,7 @@ public class DrawTester {
             ImageUtil.getImageFromPixels(mtx);
         }
 
-        if (false) {
+        if (true) {
 
             int[][] mtx = new int[height][width];
 

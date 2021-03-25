@@ -82,7 +82,7 @@ public class DrawLecture {
             ImageUtil.getImageFromPixels(pixels);
         }
 
-        if (true) {
+        if (false) {
 
             int[][] pixelsFromImage = ImageUtil.getPixelsFromImage("harry-potter-and-the-sorcerers-stone-700x380.jpg");
 
@@ -103,6 +103,27 @@ public class DrawLecture {
 
 
             ImageUtil.getImageFromPixels(pixelsFromImage);
+
+        }
+
+        if (true) {
+
+            int[][] pixelsFromImage = ImageUtil.getPixelsFromImage("harry-potter-and-the-sorcerers-stone-700x380.jpg");
+
+            int[][] res = new int[pixelsFromImage[0].length][pixelsFromImage.length];
+
+            for(int i = 0 ; i < pixelsFromImage.length ; i++){
+                for (int j = 0; j < pixelsFromImage[0].length; j++) {
+
+                    //i j -> ????
+                    res[j][pixelsFromImage.length - 1 - i]
+                            = pixelsFromImage[i][j];
+
+                }
+            }
+
+
+            ImageUtil.getImageFromPixels(res);
 
         }
     }

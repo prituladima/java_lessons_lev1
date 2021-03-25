@@ -88,11 +88,11 @@ public class DrawLecture {
 
 
             ////
-            for(int i = 0 ; i < pixelsFromImage.length ; i++){
+            for (int i = 0; i < pixelsFromImage.length; i++) {
 
                 //REVERSE
 
-                for(int j = 0 , k = pixelsFromImage[i].length - 1; j < k ; j++, k--){
+                for (int j = 0, k = pixelsFromImage[i].length - 1; j < k; j++, k--) {
 
                     pixelsFromImage[i][j] += pixelsFromImage[i][k];
                     pixelsFromImage[i][k] = pixelsFromImage[i][j] - pixelsFromImage[i][k];
@@ -106,13 +106,13 @@ public class DrawLecture {
 
         }
 
-        if (true) {
+        if (false) {
 
             int[][] pixelsFromImage = ImageUtil.getPixelsFromImage("harry-potter-and-the-sorcerers-stone-700x380.jpg");
 
             int[][] res = new int[pixelsFromImage[0].length][pixelsFromImage.length];
 
-            for(int i = 0 ; i < pixelsFromImage.length ; i++){
+            for (int i = 0; i < pixelsFromImage.length; i++) {
                 for (int j = 0; j < pixelsFromImage[0].length; j++) {
 
                     //i j -> ????
@@ -125,6 +125,22 @@ public class DrawLecture {
 
             ImageUtil.getImageFromPixels(res);
 
+        }
+
+        if (false) {
+            int[][] res = new int[800][800];
+
+            int black = 0x00_00_00;
+            int white = 0xFF_FF_FF;
+
+            for (int i = 0; i < 800; i++) {
+                for (int j = 0; j < 800; j++) {
+                    int x = j / 100;
+                    int y = i / 100;
+                    res[i][j] = (x + y) % 2 != 0 ? black : white;
+                }
+            }
+            ImageUtil.getImageFromPixels(res);
         }
     }
 }

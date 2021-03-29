@@ -35,6 +35,14 @@ public class MutableSet implements ISet {
         System.out.println("len = " + len);
     }
 
+    //0, 1, 2, .... 31, 32,
+    //int val
+    //int[] val = new int[2];
+    //{00000000000000100001000000010110, 00000000000000000000000000000001}
+    //
+
+
+
     @Override
     public int len() {
         return len;
@@ -55,7 +63,18 @@ public class MutableSet implements ISet {
         //                            00000000000000000000000000001000   1 << 3
         //       val & (1 << toCheck) > 0
 
+        //ensureCapacity(ind);
+        //toCheck = 302;
         return (val & (1 << toCheck)) > 0;
+
+        //int[] val;
+        //toCheck = 32;
+        //int ind = toCheck / 32;
+        //toCheck = toCheck % 32;
+        //return ind < val.len && (val[ind] & (1 << toCheck)) > 0;
+
+
+
     }
 
     @Override
@@ -115,7 +134,16 @@ public class MutableSet implements ISet {
 
     @Override
     public String toString() {
+
         return toBinaryString(val);
+
+        //int ind = 5; 0 , 1, 2, 3, 4, 5
+        //int bit = 2; 0, 1, 2 //1
+        //int val = 5 * 32 + 2
+        //int[] ans = new int[len];
+        //
+        //return Arrays.toString(ans);
+        //[1, 2, 6, 66, 207]...
     }
 
     private static String toBinaryString(int numb) {

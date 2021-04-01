@@ -90,6 +90,18 @@ public class Main {
 
     }
 
+//    private static String concat(char ch){
+//        //new array char[]
+//        //clone
+//        //insert ch
+//    }
+//
+//    private static String concat(String str){
+//        for(int i = 0 ; i < str.length(); i++){
+//            concat(str.charAt(i));
+//        }
+//    }
+
     private static void print(int a){
         System.out.println(a);
     }

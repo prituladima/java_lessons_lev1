@@ -336,9 +336,9 @@ public class DrawTester {
             int[][] mtx = new int[height][width];
 
             int color1 = 0xFF0000;//Left top i == 0, j == 0
-            int color2 = 0x00FF00;//Right top i == 0, j == height - 1
+            int color2 = 0xFFFF00;//Right top i == 0, j == height - 1
             int color3 = 0x0000FF;//Right bottom i == width - 1, j == height - 1
-            int color4 = 0x0FFFF0;//Left bottom i == width - 1, j == 0
+            int color4 = 0x00FF00;//Left bottom i == width - 1, j == 0
 
             for (int i = 0; i < height; i++) {
                 for (int j = 0; j < width; j++) {

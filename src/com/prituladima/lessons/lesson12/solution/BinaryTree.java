@@ -102,7 +102,7 @@ public class BinaryTree implements ISortedSet {
         if (!contains(val)) {
             return false;
         } else {
-            TreeNode ignore = remove(root, val);
+            root = remove(root, val);
             size--;
             return true;
         }

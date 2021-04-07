@@ -112,21 +112,21 @@ public class BinarySearchTree implements IStringSet {
         }
     }
 
-//    private TreeNode firts()
-
-    private TreeNode remove(TreeNode cur, String val) {
-        int compareRes = compare(val, cur.val);
-        if (cur.right == null && cur.left == null) {
-            return null;
-        } else if (cur.left == null) {
-            return cur.right;
-        } else if (cur.right == null) {
-            return cur.left;
-        } else /*if(cur.right != null && cur.left != null) */ {
-            String leftmost = leftmost(cur.right);
-            cur.val = leftmost;
-            cur.right = remove(cur.right, leftmost);
-            return cur;
+    private TreeNode remove(TreeNode node, String val) {
+        int compare = compare(val, node.val);
+        if (compare == 0) {
+            String first = leftmost(node);
+            remove(node, first);
+            TreeNode newNode = new TreeNode();
+            newNode.val = first;
+            newNode.right = node;
+            return newNode;
+        } else if (compare < 0) {
+            node.left = remove(node.left, val);
+            return node;
+        } else /*if (0 < compare)*/ {
+            node.right = remove(node.right, val);
+            return node;
         }
     }
 

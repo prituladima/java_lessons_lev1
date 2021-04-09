@@ -2,11 +2,35 @@ package com.prituladima.lessons.lesson12;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
+//        int i = 0;
+//
+//        int j = i;
+//
+//        j = (1 << 10) + 1;
+//        j = (j >>> 1) + 1;
+//        j = (j >>> 1) + 1;
+//        j = (j >>> 1) + 1;
+//        j = (j >>> 1) + 1;
+//        j = (j >>> 1) + 1;
+//        j = (j >>> 1) + 1;
+//        j = (j >>> 1) + 1;
+//        j = (j >>> 1) + 1;
+//
+//        i += j;
+//
+//        System.out.println(i);
+
+        int hash = Integer.MIN_VALUE;
+        int len = 15;
+        System.out.println((hash % len + len) % len);
+
+
         //1, 2, 2, 3
         //3
         //1, 2, 3 contains 3?

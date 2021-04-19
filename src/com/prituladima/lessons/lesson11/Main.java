@@ -87,6 +87,17 @@ public class Main {
         //System.out.println(ans);
         System.out.println(end3 - start3);
 
+        LinkedStack linkedStack = new LinkedStack();
+        for (Integer cur : linkedStack) {
+
+        }
+
+
+//        Iterable<String> s = null;
+//        for (String s1 : s) {
+//
+//        }
+
     }
 
 

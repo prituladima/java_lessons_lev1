@@ -1,6 +1,10 @@
 package com.prituladima.lessons.lesson13.lecture;
 
-public class HashTable implements IMap {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+
+public class HashTable implements IMap, Iterable<String> {
 
     double loadFactor;
     int cap;
@@ -9,7 +13,7 @@ public class HashTable implements IMap {
 
     public HashTable() {
         loadFactor = 0.75;
-        cap = 160_000;
+        cap = 16;
         nodes = new Node[cap];
     }
 
@@ -18,7 +22,7 @@ public class HashTable implements IMap {
         int val;
         Node next;
 
-        Node prevAdded;
+//        Node prevAdded;
     }
 
     private int ind(String key) {
@@ -176,4 +180,69 @@ public class HashTable implements IMap {
 
         return ans.toString();
     }
+
+
+    @Override
+    public Iterator<String> iterator() {
+        return new HashTableIterator(nodes);
+    }
+
+    //does not support null
+    private static class HashTableIterator implements Iterator<String> {
+
+        Node[] nodes;
+
+        int nextInd;
+        Node cur;
+
+        String nextValue;
+
+        public HashTableIterator(Node[] nodes) {
+            this.nodes = nodes;
+            this.nextInd = 0;
+            prepareNext();
+        }
+
+        private void prepareNext() {
+            //todo find error here
+            String oldValue = nextValue;
+            while (Objects.equals(oldValue, nextValue) && nextInd < nodes.length) {
+
+                if (nodes[nextInd] == null) {
+                    nextInd++;
+                } else /*if(nodes[nextInd] != null) */ {
+                    cur = nodes[nextInd];
+                    nextValue = cur.key;
+                }
+
+                if (cur != null && cur.next == null) {
+                    nextInd++;
+                }
+            }
+
+
+        }
+
+        //Idempotency
+        //1 side effect
+        //2 ---
+        @Override
+        public boolean hasNext() {
+            return nextValue != null;
+        }
+
+        @Override
+        public String next() {
+            if (this.hasNext()) {
+                String val = nextValue;
+                prepareNext();
+                return val;
+            } else {
+                throw new NoSuchElementException();
+            }
+
+        }
+    }
+
+
 }

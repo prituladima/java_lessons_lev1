@@ -1,6 +1,13 @@
 package com.prituladima.lessons.lesson11;
 
-public class LinkedStack implements IStack {
+import java.util.Iterator;
+
+public class LinkedStack implements IStack, Iterable<Integer> {
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return null;
+    }
 
     private static class Node {
         int val;

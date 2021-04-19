@@ -4,9 +4,11 @@ import com.prituladima.lessons.lesson6.IArray;
 import com.prituladima.lessons.lesson6.MutableArray;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 //Inheritance
-public class BufferedArray extends MutableArray {
+public class BufferedArray extends MutableArray implements Iterable<Integer> {
 
     int capacity;
     int length;
@@ -74,4 +76,42 @@ public class BufferedArray extends MutableArray {
     public String toString() {
         return Arrays.toString(Arrays.copyOf(arr, length));
     }
+
+    //Single use
+    //Multiple objects
+    //throw error
+    @Override
+    public Iterator<Integer> iterator() {
+        return new BufferedArrayIterator(arr, length);
+    }
+
+    private static class BufferedArrayIterator implements Iterator<Integer> {
+
+        int nextInd;
+        int[] arr;
+        int len;
+
+        public BufferedArrayIterator(int[] arr, int len) {
+            this.arr = arr;
+            this.len = len;
+            this.nextInd = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return nextInd != len;
+        }
+
+        @Override
+        public Integer next() {
+            if (nextInd == len) {
+                throw new NoSuchElementException("");
+            } else {
+                return arr[nextInd++];
+            }
+        }
+    }
+
+
+
 }

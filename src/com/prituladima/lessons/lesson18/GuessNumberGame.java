@@ -8,6 +8,8 @@ public class GuessNumberGame {
     private BigInteger guessMe;
 
     public GuessNumberGame() {
+        //generates random number in semi-interval [0..2^8192)
+        //to compare with int [0..2^31) or long [0..2^63)
         guessMe = new BigInteger(8192, new Random());
     }
 

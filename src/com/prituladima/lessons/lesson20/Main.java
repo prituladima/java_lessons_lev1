@@ -1,6 +1,7 @@
 package com.prituladima.lessons.lesson20;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
@@ -82,6 +83,70 @@ public class Main {
         }
 
 
+        //4. Quick sort O(n*log(n)) O(n^2) in-place
+        //arr = [2 4 5 2 3 5 7 8 9 6 4 3]
+        //int last = 3
+        //int[] left = [2 4 5 2 3 5 7 8 9 6 4 3].filter(el < 3)
+        //int[] right = [2 4 5 2 3 5 7 8 9 6 4 3].filter(3 <= el)
+        //arr = left + right
+        //sort(arr, 0, left.len)
+        //sort(arr, left.len, arr.len)
+        //1. O(n*log(n))???
+        //2. not in-place
+
+
+
+        //[2 4 5 2 3 5 7 8 9 6 4 3]
+        //[2 2] [4 5 3 5 7 8 9 6 4 3]
+        //      [4 5 3 5 7 8 9 6 4 3]
+
+        //[1 2 4 3  5 6 7 8 8 9 10]
+
+        //in average O(n*log(n))* in-place
+        //memory O(log(n))
+
+        //O(n*log(n)) - 40ms <> O(n^2) - 1min
+
+        //int p = pivot
+        //sort(arr, 0, p)
+        //sort(arr, p, arr.len)
+
+    }
+
+    //{2, 3, 1, 5, 7, 9, 8, 2, 3, 4, 5}
+
+    //
+    private static int pivot(int[] arr, int from, int upTo) {
+        Random random = new Random();
+        int randomInd = from + random.nextInt(upTo - from);//[from, upTo) ???[0, 10)
+        swap(arr, upTo - 1, randomInd);
+
+        //O(n) time
+        //O(1) memory
+        int last = arr[upTo - 1];
+        //left arr[i] < last
+        //right last <= arr[i]
+        int j = from - 1;
+        for(int i = from ; i < upTo - 1; i++){
+            if(arr[i] < last){
+
+                j++;
+                if(j >= from) {
+                    swap(arr, j, i);
+                }
+            }
+        }
+        // {ТЕ КТО МЕНЬШЕ, ОСТАЛЬНЫЕ, ПОСЛЕДНИЙ}
+        swap(arr, j ++, upTo - 1);
+        // {ТЕ КТО МЕНЬШЕ, ПОСЛЕДНИЙ, ОСТАЛЬНЫЕ}
+        //return ПОСЛЕДНИЙ index
+        return j;
+    }
+
+    private static void swap(int[] arr, int f, int s) {
+        int temp = arr[f];
+        arr[f] = arr[s];
+        arr[s] = temp;
     }
 
     private static String toBinaryString(int numb) {

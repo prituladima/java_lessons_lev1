@@ -10,12 +10,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Main {
 
-    private static int AMERICANO = 1;
+    private static int AMERICANO = 1 << 0; //00000000001
     private static int ESPRESSO = 1 << 1;
     private static int LATE = 1 << 2;         //00000000100
     private static int FILTER_COFFEE = 1 << 3;//00000001000
-    private static int ALL_TYPES = AMERICANO | ESPRESSO | LATE | FILTER_COFFEE;
+    private static int ALL_TYPES = ESPRESSO | LATE | FILTER_COFFEE;//00000001111
     private static int NO_MILK = AMERICANO | ESPRESSO | FILTER_COFFEE;
+    private static int ALL_TYPES_WITHNOAM = ALL_TYPES ^ AMERICANO;
 
     public static void main(String[] args) {
 

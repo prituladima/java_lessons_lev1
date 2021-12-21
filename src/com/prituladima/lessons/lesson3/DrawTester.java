@@ -331,7 +331,7 @@ public class DrawTester {
             ImageUtil.getImageFromPixels(mtx);
         }
 
-        if (true) {
+        if (false) {
 
             int[][] mtx = new int[height][width];
 
@@ -372,12 +372,12 @@ public class DrawTester {
             ImageUtil.getImageFromPixels(mtx);
         }
 
-        if (false) {
+        if (true) {
 
             //Rounded gradient
             int width_ = width;
             int height_ = height;
-            int r = 200;
+            int r = 500;
             int[][] pixels = new int[width_][height_];
             for (int i = 0; i < width_; i++) {
                 for (int j = 0; j < height_; j++) {

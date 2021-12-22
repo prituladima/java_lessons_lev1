@@ -1,5 +1,7 @@
 package com.prituladima.lessons.lesson3;
 
+import java.util.function.UnaryOperator;
+
 import static com.prituladima.lessons.lesson3.ImageUtil.getImageFromPixels;
 import static com.prituladima.lessons.lesson3.ImageUtil.getPixelsFromImage;
 
@@ -184,24 +186,26 @@ public class DrawTester {
         }
 
         if (false) {
-
-
+            double SCALE = 15;
+            UnaryOperator<Double> FX = t -> 16 * Math.pow(Math.sin(t), 3);
+            UnaryOperator<Double> FY = t -> 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
             int width_ = width;
             int height_ = height;
 
             int[][] pixels = new int[width_][height_];
             for (int i = 0; i < width_; i++) {
                 for (int j = 0; j < height_; j++) {
-                    double y = (-i + height_ / 2) * 1.2;
-                    int x = j - width_ / 2;
-                    double exp = y - Math.pow(Math.abs(x), 1.0);
-                    if (x * x + exp * exp < height_ / 2) {
-                        pixels[i][j] = 0xFF0000;
-                    } else {
-                        pixels[i][j] = 0xFFFFFF;
-                    }
-
+                    pixels[i][j] = 0xFFFFFF;
                 }
+            }
+
+            for (double t = 0; t < 2 * Math.PI; t += 2 * Math.PI / 500) {
+                int y = (int)(FY.apply(t) * -SCALE + width_ / 2.0);
+                int x = (int)(FX.apply(t) * -SCALE + height_ / 2.0);
+
+
+                    pixels[y][x] = 0xFF0000;
+
             }
             String imageFromPixels = getImageFromPixels(pixels);
 
@@ -372,7 +376,7 @@ public class DrawTester {
             ImageUtil.getImageFromPixels(mtx);
         }
 
-        if (true) {
+        if (false) {
 
             //Rounded gradient
             int width_ = width;

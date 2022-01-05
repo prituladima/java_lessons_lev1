@@ -186,6 +186,7 @@ public class DrawTester {
         }
 
         if (false) {
+            //Love
             double SCALE = 15;
             UnaryOperator<Double> FX = t -> 16 * Math.pow(Math.sin(t), 3);
             UnaryOperator<Double> FY = t -> 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
@@ -200,11 +201,11 @@ public class DrawTester {
             }
 
             for (double t = 0; t < 2 * Math.PI; t += 2 * Math.PI / 500) {
-                int y = (int)(FY.apply(t) * -SCALE + width_ / 2.0);
-                int x = (int)(FX.apply(t) * -SCALE + height_ / 2.0);
+                int y = (int) (FY.apply(t) * -SCALE + width_ / 2.0);
+                int x = (int) (FX.apply(t) * -SCALE + height_ / 2.0);
 
 
-                    pixels[y][x] = 0xFF0000;
+                pixels[y][x] = 0xFF0000;
 
             }
             String imageFromPixels = getImageFromPixels(pixels);

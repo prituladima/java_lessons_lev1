@@ -1,5 +1,7 @@
 package com.prituladima.lessons.lesson3;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.UnaryOperator;
 
 import static com.prituladima.lessons.lesson3.ImageUtil.getImageFromPixels;
@@ -200,16 +202,32 @@ public class DrawTester {
                 }
             }
 
-            for (double t = 0; t < 2 * Math.PI; t += 2 * Math.PI / 500) {
+            Map<Integer, Integer> minYbyX = new HashMap<>();
+            Map<Integer, Integer> maxYbyX = new HashMap<>();
+
+            for (double t = 0; t < 2 * Math.PI; t += 2 * Math.PI / 2000) {
                 int y = (int) (FY.apply(t) * -SCALE + width_ / 2.0);
                 int x = (int) (FX.apply(t) * -SCALE + height_ / 2.0);
 
 
                 pixels[y][x] = 0xFF0000;
 
-            }
-            String imageFromPixels = getImageFromPixels(pixels);
+                minYbyX.merge(x, y, Math::min);
+                maxYbyX.merge(x, y, Math::max);
 
+            }
+
+            for (int x : minYbyX.keySet()) {
+                int fromY = minYbyX.get(x);
+                int toY = maxYbyX.get(x);
+                for (int y = fromY; y <= toY; y++) {
+                    pixels[y][x] = 0xFF0000;
+                }
+
+            }
+
+            String imageFromPixels = getImageFromPixels(pixels);
+            System.out.println(imageFromPixels);
         }
 
         if (false) {
